@@ -15,38 +15,15 @@ $ git clone https://github.com/CanDoVueJS/hot-place-share-api.git
 ```sh
 cd hot-place-share-api
 ```
-# Make it your own
-rm -rf .git && git init && npm init
 
-# Install dependencies
-npm install
-
-# Start development live-reload server
-PORT=8080 npm run dev
-
-# Start production server:
-PORT=8080 npm start
-```
-Docker Support
-------
+3. 프로젝트에서 사용할 패키지를 다운받으세요
 ```sh
-cd express-es6-rest-api
-
-# Build your docker
-docker build -t es6/api-service .
-#            ^      ^           ^
-#          tag  tag name      Dockerfile location
-
-# run your docker
-docker run -p 8080:8080 es6/api-service
-#                 ^            ^
-#          bind the port    container tag
-#          to your host
-#          machine port   
-
+npm install
+# 또는
+npm i
 ```
 
-License
--------
-
-MIT
+4. 서버를 실행하세요
+```sh
+PORT=8080 npm run dev
+```
