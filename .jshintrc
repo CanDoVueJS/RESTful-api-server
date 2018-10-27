@@ -1,0 +1,8 @@
+{
+    "node": true,
+    "browser": true,
+    "globals": {
+        "grecaptcha": true
+    },
+    "esversion": 6
+}
