@@ -1,12 +1,14 @@
 import { version } from '../../package.json';
 import { Router } from 'express';
-import test from './Test';
 
-export default ({ config, db }) => {
+/** @desv Views */
+import UserView from './User';
+
+export default ({ config }) => {
   const API = Router();
 
   // mount the test resource
-  API.use('/test', test({ config, db }));
+  API.use('/users', UserView({ config }));
 
   // perhaps expose some API metadata at the root
   API.get('/', (req, res) => {
