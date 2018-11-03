@@ -16,11 +16,16 @@ $ git clone https://github.com/CanDoVueJS/hot-place-share-api.git
 cd hot-place-share-api
 ```
 
-3. 프로젝트에서 사용할 패키지를 다운받으세요
+3. 프로젝트에서 사용할 패키지를 설치하세요
 ```sh
 npm install
 # 또는
 npm i
+```
+
+4. Sequelize CLI를 전역으로 설치하세요
+```sh
+npm install -g sequelize-cli
 ```
 
 4. 서버를 실행하세요

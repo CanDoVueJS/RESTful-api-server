@@ -1,0 +1,20 @@
+{
+  "development": {
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "./sqlite.db",
+    "logging": true
+  },
+  "test": {
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "./sqlite.db",
+    "logging": true
+  },
+  "production": {
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "./sqlite.db",
+    "logging": false
+  }
+}
