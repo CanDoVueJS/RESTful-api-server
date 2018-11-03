@@ -2,18 +2,25 @@ import resource from 'resource-router-middleware';
 import { User } from '../models';
 
 export default ({ config }) => resource({
-  id: 'User',
+  id: 'user',
   /** For requests with an `id`, you can auto-load the entity.
    *  Errors terminate the request, success sets `req[id] = data`.
    */
-  load (req, id, callback) {
-
+  async load (req, id, callback) {
+    try {
+      const user = await User.findById(id);
+      const data = user ? user.dataValues : null;
+      callback({}, data);
+    }
+    catch (e) {}
   },
   /** GET / - List all entities */
   async index ({ params }, res) {
-    User.findAll().then(users => {
+    try {
+      const users = await User.findAll();
       res.json(users);
-    });
+    }
+    catch (e) {}
   },
 
   /** POST / - Create a new entity */
@@ -24,8 +31,8 @@ export default ({ config }) => resource({
   },
 
   /** GET /:id - Return a given entity */
-  read ({ facet }, res) {
-    res.json(facet);
+  read ({ user }, res) {
+    res.json(user);
   },
 
   /** PUT /:id - Update a given entity */
