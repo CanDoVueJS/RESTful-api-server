@@ -1,7 +1,7 @@
 {
-  "name": "express-es6-rest-api",
-  "version": "0.3.0",
-  "description": "Starter project for an ES6 RESTful Express API",
+  "name": "hot-place-share-api",
+  "version": "0.0.1",
+  "description": "CanDoVueJS의 맛집 공유 샘플서비스 Restful API",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
@@ -10,25 +10,12 @@
     "prestart": "npm run -s build",
     "test": "eslint src",
     "db:init": "node_modules/.bin/sequelize init",
+    "db:emptymigration": "node_modules/.bin/sequelize migration:create",
     "db:migrate": "node_modules/.bin/sequelize db:migrate",
     "db:seed": "node_modules/.bin/sequelize db:seed:all"
   },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true
-    },
-    "rules": {
-      "no-console": 0,
-      "no-unused-vars": 1
-    }
-  },
-  "repository": "developit/express-es6-rest-api",
-  "author": "Jason Miller <jason@developit.ca>",
+  "repository": "CanDoVueJS/hot-place-share-api",
+  "author": "Evan Moon <bboydart91@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.3",

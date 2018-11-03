@@ -1,6 +1,6 @@
 {
-  "name": "express-es6-rest-api",
-  "version": "0.3.0",
+  "name": "hot-place-share-api",
+  "version": "0.0.1",
   "dependencies": {
     "@babel/code-frame": {
       "version": "7.0.0",
