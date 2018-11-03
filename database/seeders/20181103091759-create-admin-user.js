@@ -3,11 +3,10 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [{
-      name: 'Admin',
-      password: 'test123',
       email: 'admin@candovue.com',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      password: 'admin123',
+      name: 'Admin',
+      isAdmin: true,
     }], {});
   },
 

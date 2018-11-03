@@ -2,19 +2,19 @@
   "development": {
     "host": "localhost",
     "dialect": "sqlite",
-    "storage": "./sqlite.db",
+    "storage": "./database.sqlite",
     "logging": true
   },
   "test": {
     "host": "localhost",
     "dialect": "sqlite",
-    "storage": "./sqlite.db",
+    "storage": "./database.sqlite",
     "logging": true
   },
   "production": {
     "host": "localhost",
     "dialect": "sqlite",
-    "storage": "./sqlite.db",
+    "storage": "./database.sqlite",
     "logging": false
   }
 }

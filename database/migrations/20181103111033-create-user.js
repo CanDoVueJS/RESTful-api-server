@@ -1,14 +1,14 @@
 'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
-      name: {
+      email: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -16,18 +16,24 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      email: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      isAdmin: {
+        defaultValue: false,
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        type: Sequelize.TIME,
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        type: Sequelize.TIME,
       },
+    }, {
+      timestamps: true,
     });
   },
   down: (queryInterface, Sequelize) => {
