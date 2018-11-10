@@ -9,8 +9,7 @@ export default ({ config }) => resource({
   async load (req, id, callback) {
     try {
       const user = await User.findById(id);
-      const data = user ? user.dataValues : null;
-      callback({}, data);
+      callback(user ? null : 'Not Found', user);
     }
     catch (e) {}
   },
@@ -22,12 +21,18 @@ export default ({ config }) => resource({
     }
     catch (e) {}
   },
-
   /** POST / - Create a new entity */
-  create ({ body }, res) {
-    // body.id = test.length.toString(36);
-    // test.push(body);
-    // res.json(body);
+  async create (req, res) {
+    const newUser = await User.create({
+      email: req.body.email,
+      password: req.body.password,
+      name: req.body.name,
+    });
+    res.json({
+      id: newUser.null,
+      email: newUser.email,
+      name: newUser.name,
+    });
   },
 
   /** GET /:id - Return a given entity */
