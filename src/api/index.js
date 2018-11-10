@@ -6,9 +6,9 @@ import UserView from './User';
 
 export default ({ config }) => {
   const API = Router();
-
+  
   // mount the test resource
-  API.use('/users', UserView({ config }));
+  API.use('/users', UserView);
 
   // perhaps expose some API metadata at the root
   API.get('/', (req, res) => {
