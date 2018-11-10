@@ -1,11 +1,14 @@
 import { version } from '../../package.json';
 import { Router } from 'express';
+import passportLib from '../lib/passport';
 
 /** @desv Views */
 import AuthView from './Auth';
 import UserView from './User';
 
 export default ({ config }) => {
+  passportLib.init();
+
   const API = Router();
 
   // mount the test resource
