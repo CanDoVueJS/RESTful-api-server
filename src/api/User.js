@@ -6,21 +6,21 @@ const router = Router();
 router.get('/', async (req, res) => {
   try {
     const users = await User.findAll();
-    res.json(200, users);
+    res.status(200).json(users);
   }
   catch (e) {
-    res.json(400);
+    res.status(500).json({});
   }
 });
 
 router.get('/:id', async (req, res) => {
-  const id =req.params.id;
+  const userId = req.params.id;
   try {
-    const user = await User.findById(id);
-    res.json(200, user);
+    const user = await User.findById(userId);
+    res.status(200).json(user);
   }
   catch (e) {
-    res.json(400);
+    res.status(500).json({});
   }
 });
 

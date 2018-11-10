@@ -2,12 +2,14 @@ import { version } from '../../package.json';
 import { Router } from 'express';
 
 /** @desv Views */
+import AuthView from './Auth';
 import UserView from './User';
 
 export default ({ config }) => {
   const API = Router();
-  
+
   // mount the test resource
+  API.use('/auth', AuthView);
   API.use('/users', UserView);
 
   // perhaps expose some API metadata at the root
