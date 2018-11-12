@@ -4,8 +4,10 @@ import { User } from '../models';
 
 export default {
   init () {
-    passport.use(new LocalStrategy.Strategy({ usernameField: 'email', passwordField: 'password' },
+    passport.use(new LocalStrategy.Strategy(
+      { usernameField: 'email', passwordField: 'password' },
       async function (email, password, done) {
+        console.log(email, password);
         // 인증 정보 체크 로직
         try {
           const user = await User.findOne({
@@ -20,6 +22,7 @@ export default {
           }
         }
         catch (e) {
+          console.error(e);
           return done(null, false, {});
         }
       }
