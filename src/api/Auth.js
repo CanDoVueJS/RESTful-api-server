@@ -19,8 +19,13 @@ router.post('/signup', async (req, res) => {
     });
   }
   catch (e) {
-    console.error(e);
-    res.status(500).json(e);
+    if (e.name === 'SequelizeUniqueConstraintError') {
+      res.status(400).json({ msg: '이미 가입된 이메일 입니다' });
+    }
+    else {
+      console.error(e);
+      res.status(500).json(e);
+    }
   }
 });
 
@@ -29,10 +34,7 @@ router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
       const error = err || info;
       if (error) {
-        return res.status(401).json(error);
-      }
-      if (!user) {
-        return res.status(404).json({});
+        return res.status(404).json({ msg: '존재하지 않는 이메일 입니다.' });
       }
 
       const accessToken = generateToken({
@@ -40,10 +42,12 @@ router.post('/login', (req, res, next) => {
         email: user.email,
         name: user.name,
       });
-      res.json({ access_token: accessToken });
+      res.json({ accessToken: accessToken });
     })(req, res, next);
   }
-  catch (e) {}
+  catch (e) {
+    return res.status(500).json({});
+  }
 });
 
 export default router;
