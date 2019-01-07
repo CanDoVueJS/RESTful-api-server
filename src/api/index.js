@@ -14,7 +14,7 @@ export default ({ config }) => {
 
   // mount the test resource
   API.use('/auth', AuthView);
-  API.use('/users', isAuthenticated(), UserView);
+  API.use('/users', UserView);
 
   // perhaps expose some API metadata at the root
   API.get('/', (req, res) => {
