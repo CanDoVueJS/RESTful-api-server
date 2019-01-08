@@ -16,7 +16,6 @@ function isAuthenticated () {
     // Validate jwt
     .use(function (req, res, next) {
       try {
-        console.log('token -> ', req.headers.authorization);
         validate(req, res, next);
       }
       catch (e) {
