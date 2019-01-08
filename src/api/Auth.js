@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
       name: req.body.name,
     });
     res.status(201).json({
-      id: newUser.null,
+      id: newUser.id,
       email: newUser.email,
       name: newUser.name,
     });

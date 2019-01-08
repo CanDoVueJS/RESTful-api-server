@@ -7,7 +7,6 @@ export default {
     passport.use(new LocalStrategy.Strategy(
       { usernameField: 'email', passwordField: 'password' },
       async function (email, password, done) {
-        console.log(email, password);
         // 인증 정보 체크 로직
         try {
           const user = await User.findOne({

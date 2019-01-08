@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     res.status(200).json(users);
   }
   catch (e) {
-    res.status(500).json({});
+    res.status(500);
   }
 });
 
@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
     res.status(200).json(user);
   }
   catch (e) {
-    res.status(500).json({});
+    res.status(500);
   }
 });
 
