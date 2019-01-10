@@ -58,6 +58,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function (models) {
     // associations can be defined here
+    User.hasMany(models.Post);
   };
   User.prototype.toJSON = function () {
     const value = Object.assign({}, this.get());

@@ -1,7 +1,5 @@
-const { User } = require('./index');
-
 module.exports = (sequelize, DataTypes) => {
-  const Place = sequelize.define('Post', {
+  const Post = sequelize.define('Post', {
     id: {
       primaryKey: true,
       type: DataTypes.INTEGER,
@@ -15,13 +13,18 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    user: {
+    contents: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [0, 500],
+          msg: '포스트는 최소 1자 이상 최대 500자 이하여야 합니다.',
+        },
+      },
+    },
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      reference: {
-        model: User,
-        key: 'id',
-      },
     },
     createdAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
@@ -35,8 +38,9 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'Posts',
     timestamps: true,
   });
-  Place.associate = function (models) {
+  Post.associate = function (models) {
     // associations can be defined here
+    Post.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'id', as: 'user' });
   };
-  return Place;
+  return Post;
 };

@@ -7,16 +7,19 @@ const router = Router();
 router.post('/', isAuthenticated(), async (req, res) => {
   try {
     const newPost = await Post.create({
-      user: req.user.id,
-      name: req.body.name,
+      userId: req.user.id,
+      title: req.body.title,
+      contents: req.body.contents,
     });
     res.status(201).json({
       id: newPost.id,
       title: newPost.title,
+      contents: newPost.contents,
+      user: newPost.user,
     });
   }
   catch (e) {
-    res.status(500);
+    res.status(500).json(e);
   }
 });
 
