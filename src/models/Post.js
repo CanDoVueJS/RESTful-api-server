@@ -1,17 +1,17 @@
 const { User } = require('./index');
 
 module.exports = (sequelize, DataTypes) => {
-  const Place = sequelize.define('Place', {
+  const Place = sequelize.define('Post', {
     id: {
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       validate: {
         len: {
           args: [0, 255],
-          msg: '맛집 이름이 너무 깁니다',
+          msg: '포스트 제목이 너무 깁니다',
         },
       },
     },
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TIME,
     },
   }, {
-    tableName: 'Places',
+    tableName: 'Posts',
     timestamps: true,
   });
   Place.associate = function (models) {

@@ -6,7 +6,7 @@ import passportLib from '../lib/passport';
 /** @desv Views */
 import AuthView from './Auth';
 import UserView from './User';
-import PlaceView from './Place';
+import PostView from './Post';
 
 export default ({ config }) => {
   passportLib.init();
@@ -16,7 +16,7 @@ export default ({ config }) => {
   // mount the test resource
   API.use('/auth', AuthView);
   API.use('/users', UserView);
-  API.use('/places', PlaceView);
+  API.use('/posts', PostView);
 
   // perhaps expose some API metadata at the root
   API.get('/', (req, res) => {
