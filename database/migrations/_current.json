@@ -52,10 +52,6 @@
                     "field": "updatedAt",
                     "seqType": "Sequelize.TIME"
                 },
-                "deletedAt": {
-                    "field": "deletedAt",
-                    "seqType": "Sequelize.DATE"
-                },
                 "UserId": {
                     "allowNull": true,
                     "references": {
@@ -132,14 +128,10 @@
                     },
                     "field": "updatedAt",
                     "seqType": "Sequelize.TIME"
-                },
-                "deletedAt": {
-                    "field": "deletedAt",
-                    "seqType": "Sequelize.DATE"
                 }
             },
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }

@@ -13,7 +13,7 @@ var Sequelize = require('sequelize');
 var info = {
     "revision": 1,
     "name": "noname",
-    "created": "2019-01-12T02:54:20.516Z",
+    "created": "2019-01-12T03:09:17.822Z",
     "comment": ""
 };
 
@@ -62,18 +62,14 @@ var migrationCommands = [{
                     "defaultValue": false
                 },
                 "createdAt": {
-                    "type": Sequelize.DATE,
+                    "type": Sequelize.TIME,
                     "field": "createdAt",
-                    "allowNull": false
+                    "defaultValue": Sequelize.Literal
                 },
                 "updatedAt": {
-                    "type": Sequelize.DATE,
+                    "type": Sequelize.TIME,
                     "field": "updatedAt",
-                    "allowNull": false
-                },
-                "deletedAt": {
-                    "type": Sequelize.DATE,
-                    "field": "deletedAt"
+                    "defaultValue": Sequelize.Literal
                 }
             },
             {}
@@ -112,18 +108,14 @@ var migrationCommands = [{
                     }
                 },
                 "createdAt": {
-                    "type": Sequelize.DATE,
+                    "type": Sequelize.TIME,
                     "field": "createdAt",
-                    "allowNull": false
+                    "defaultValue": Sequelize.Literal
                 },
                 "updatedAt": {
-                    "type": Sequelize.DATE,
+                    "type": Sequelize.TIME,
                     "field": "updatedAt",
-                    "allowNull": false
-                },
-                "deletedAt": {
-                    "type": Sequelize.DATE,
-                    "field": "deletedAt"
+                    "defaultValue": Sequelize.Literal
                 },
                 "UserId": {
                     "type": Sequelize.INTEGER,
