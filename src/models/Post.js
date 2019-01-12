@@ -34,5 +34,12 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Post.belongsTo(models.User);
   };
+  Post.prototype.toJSON = function () {
+    const value = Object.assign({}, this.get());
+    value.user = value.User;
+    delete value.User;
+    delete value.UserId;
+    return value;
+  };
   return Post;
 };

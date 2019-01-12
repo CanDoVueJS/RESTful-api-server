@@ -1,4 +1,4 @@
-import { Post } from '../models';
+import { User, Post } from '../models';
 import { Router } from 'express';
 import { isAuthenticated } from '../lib/jwt';
 
@@ -25,7 +25,9 @@ router.post('/', isAuthenticated(), async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const places = await Post.findAll();
+    const places = await Post.findAll({
+      include: { model: User },
+    });
     res.status(200).json(places);
   }
   catch (e) {
@@ -36,7 +38,10 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const postId = req.params.id;
   try {
-    const place = await Post.findById(postId);
+    const place = await Post.findOne({
+      where: { id: postId },
+      include: { model: User },
+    });
     res.status(200).json(place);
   }
   catch (e) {

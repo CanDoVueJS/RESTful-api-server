@@ -59,6 +59,8 @@ module.exports = (sequelize, DataTypes) => {
   User.prototype.toJSON = function () {
     const value = Object.assign({}, this.get());
     delete value.password;
+    delete value.createdAt;
+    delete value.updatedAt;
     return value;
   };
   User.prototype.isValidPassword = function (password) {
