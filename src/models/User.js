@@ -3,10 +3,6 @@ const bcrypt = require('bcrypt-nodejs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    id: {
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-    },
     email: {
       allowNull: false,
       type: DataTypes.STRING,
@@ -55,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'Users',
     timestamps: true,
+    paranoid: true,
   });
   User.associate = function (models) {
     // associations can be defined here

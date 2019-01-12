@@ -1,9 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
-    id: {
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-    },
     title: {
       type: DataTypes.STRING,
       validate: {
@@ -22,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     createdAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
@@ -37,10 +29,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'Posts',
     timestamps: true,
+    paranoid: true,
   });
   Post.associate = function (models) {
     // associations can be defined here
-    Post.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'id', as: 'user' });
+    Post.belongsTo(models.User);
   };
   return Post;
 };
