@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const compose = require('composable-middleware');
 const secret = 'hot-place-api-token-secret';
 const expiresIn = '7 days'; // minutes
+const { User } = require('../models/index');
 
 function generateToken ({ id, email, name }) {
   return jwt.sign({ id, email, name }, secret, { expiresIn });
@@ -15,22 +16,23 @@ function isAuthenticated () {
     // Validate jwt
     .use(function (req, res, next) {
       try {
-        console.log('token -> ', req.headers.authorization);
         validate(req, res, next);
       }
       catch (e) {
         console.error(e);
       }
     })
-    .use(function (req, res, next) {
-      console.log(1);
+    .use(async function (req, res, next) {
       // Attach user to request
-      req.user = {
-        id: req.user.id,
-        email: req.user.email,
-        name: req.user.name,
-      };
-      next();
+      try {
+        const user = await User.findById(req.user.id);
+        console.log('user in middleware', user);
+        req.user = user;
+        next();
+      }
+      catch (e) {
+        next(e);
+      }
     });
 }
 

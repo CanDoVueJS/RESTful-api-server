@@ -1,0 +1,137 @@
+{
+    "tables": {
+        "Posts": {
+            "tableName": "Posts",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "title": {
+                    "validate": {
+                        "len": {
+                            "args": [
+                                0,
+                                255
+                            ],
+                            "msg": "포스트 제목이 너무 깁니다"
+                        }
+                    },
+                    "field": "title",
+                    "seqType": "Sequelize.STRING"
+                },
+                "contents": {
+                    "validate": {
+                        "len": {
+                            "args": [
+                                0,
+                                500
+                            ],
+                            "msg": "포스트는 최소 1자 이상 최대 500자 이하여야 합니다."
+                        }
+                    },
+                    "field": "contents",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.Literal"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.TIME"
+                },
+                "updatedAt": {
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.Literal"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.TIME"
+                },
+                "UserId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "UserId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Users": {
+            "tableName": "Users",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "email": {
+                    "allowNull": false,
+                    "unique": true,
+                    "validate": {
+                        "isEmail": {
+                            "msg": "올바르지 않은 이메일 입니다."
+                        }
+                    },
+                    "field": "email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "password": {
+                    "allowNull": false,
+                    "field": "password",
+                    "seqType": "Sequelize.STRING"
+                },
+                "name": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                0,
+                                30
+                            ],
+                            "msg": "이름이 너무 깁니다"
+                        }
+                    },
+                    "field": "name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "isAdmin": {
+                    "defaultValue": {
+                        "value": false
+                    },
+                    "field": "isAdmin",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "createdAt": {
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.Literal"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.TIME"
+                },
+                "updatedAt": {
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.Literal"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.TIME"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 1
+}

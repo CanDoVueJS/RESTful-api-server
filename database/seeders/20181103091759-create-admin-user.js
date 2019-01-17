@@ -7,6 +7,8 @@ module.exports = {
       password: 'admin123',
       name: 'Admin',
       isAdmin: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 

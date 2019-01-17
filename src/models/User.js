@@ -3,10 +3,6 @@ const bcrypt = require('bcrypt-nodejs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    id: {
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-    },
     email: {
       allowNull: false,
       type: DataTypes.STRING,
@@ -58,10 +54,13 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function (models) {
     // associations can be defined here
+    User.hasMany(models.Post);
   };
   User.prototype.toJSON = function () {
     const value = Object.assign({}, this.get());
     delete value.password;
+    delete value.createdAt;
+    delete value.updatedAt;
     return value;
   };
   User.prototype.isValidPassword = function (password) {
