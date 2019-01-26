@@ -26,7 +26,6 @@ function isAuthenticated () {
       // Attach user to request
       try {
         const user = await User.findById(req.user.id);
-        console.log('user in middleware', user);
         req.user = user;
         next();
       }

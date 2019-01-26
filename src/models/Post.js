@@ -2,19 +2,21 @@ module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         len: {
-          args: [0, 255],
-          msg: '포스트 제목이 너무 깁니다',
+          args: [1, 255],
+          msg: '포스트 제목은 최소 1자 이상 최대 255자 이하여야 합니다.',
         },
       },
     },
     contents: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         len: {
-          args: [0, 500],
-          msg: '포스트는 최소 1자 이상 최대 500자 이하여야 합니다.',
+          args: [1, 500],
+          msg: '포스트 내용은 최소 1자 이상 최대 500자 이하여야 합니다.',
         },
       },
     },
