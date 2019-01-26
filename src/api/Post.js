@@ -54,12 +54,42 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.put('/:id', isAuthenticated(), async (req, res) => {
+  const id = req.params.id;
+  const user = req.user;
+  const post = await Post.findByPk(id);
+
+  if (!post.isMyPost(user)) {
+    res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 수정하실 수 없습니다.' });
+  }
+
+  try {
+    post.title = req.body.title;
+    post.contents = req.body.contents;
+    await post.save();
+
+    const updatedPost = await Post.findOne({
+      where: { id },
+      include: { model: User },
+    });
+    res.status(200).json(updatedPost);
+  }
+  catch (e) {
+    if (e.name === 'SequelizeValidationError') {
+      res.status(400).json({ msg: '잘못된 요청 입니다' });
+    }
+    else {
+      res.status(500).json(e);
+    }
+  }
+});
+
 router.delete('/:id', isAuthenticated(), async (req, res) => {
   const id = req.params.id;
   const user = req.user;
   const post = await Post.findByPk(id);
 
-  if (post.UserId !== user.id) {
+  if (!post.isMyPost(user)) {
     res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 삭제하실 수 없습니다.' });
   }
 

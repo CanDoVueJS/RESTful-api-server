@@ -43,5 +43,9 @@ module.exports = (sequelize, DataTypes) => {
     delete value.UserId;
     return value;
   };
+  Post.prototype.isMyPost = function (user) {
+    const value = Object.assign({}, this.get());
+    return user.id === value.UserId;
+  };
   return Post;
 };
