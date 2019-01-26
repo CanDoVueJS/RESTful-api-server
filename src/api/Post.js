@@ -54,12 +54,17 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated(), async (req, res) => {
   const id = req.params.id;
+  const user = req.user;
+  const post = await Post.findByPk(id);
+
+  if (post.UserId !== user.id) {
+    res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 삭제하실 수 없습니다.' });
+  }
+
   try {
-    await Post.destroy({
-      where: { id },
-    });
+    post.destroy();
     res.status(204).json({});
   }
   catch (e) {
