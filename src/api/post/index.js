@@ -1,8 +1,19 @@
-import { User, Post } from '../models';
+import { User, Post, Comment } from '../../models/index';
 import { Router } from 'express';
-import { isAuthenticated } from '../lib/jwt';
+import CommentView from './comment';
+import { isAuthenticated } from '../../lib/jwt';
 
 const router = Router();
+const findOption = {
+  include: [{
+    all: true,
+  }, {
+    model: Comment,
+    include: {
+      model: User,
+    },
+  }],
+};
 
 router.post('/', isAuthenticated(), async (req, res) => {
   try {
@@ -30,12 +41,11 @@ router.post('/', isAuthenticated(), async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const posts = await Post.findAll({
-      include: { model: User },
-    });
+    const posts = await Post.findAll(findOption);
     res.status(200).json(posts);
   }
   catch (e) {
+    console.log(e);
     res.status(500).json(e);
   }
 });
@@ -43,10 +53,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
   try {
-    const post = await Post.findOne({
-      where: { id },
-      include: { model: User },
-    });
+    const post = await Post.findOne(findOption);
     res.status(200).json(post);
   }
   catch (e) {
@@ -68,10 +75,7 @@ router.put('/:id', isAuthenticated(), async (req, res) => {
     post.contents = req.body.contents;
     await post.save();
 
-    const updatedPost = await Post.findOne({
-      where: { id },
-      include: { model: User },
-    });
+    const updatedPost = await Post.findOne(findOption);
     res.status(200).json(updatedPost);
   }
   catch (e) {
@@ -101,5 +105,20 @@ router.delete('/:id', isAuthenticated(), async (req, res) => {
     res.status(500).json(e);
   }
 });
+
+router.use('/:postId', async (req, res, next) => {
+  const postId = req.params.postId;
+  try {
+    const post = await Post.findByPk(postId);
+    if (!post) {
+      res.status(404);
+    }
+    req.post = post;
+    next();
+  }
+  catch (e) {
+    res.status(500).json(e);
+  }
+}, CommentView);
 
 export default router;

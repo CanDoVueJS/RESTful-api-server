@@ -1,7 +1,7 @@
-import { User } from '../models';
+import { User } from '../../models/index';
 import { Router } from 'express';
 import passport from 'passport';
-import { generateToken } from '../lib/jwt';
+import { generateToken } from '../../lib/jwt';
 
 const router = Router();
 

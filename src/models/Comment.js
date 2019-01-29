@@ -19,12 +19,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TIME,
     },
   }, {
-    tabelName: 'Comments',
+    tableName: 'Comments',
     timestamps: true,
   });
   Comment.associate = function (models) {
     Comment.belongsTo(models.Post);
     Comment.belongsTo(models.User);
+  };
+  Comment.prototype.toJSON = function () {
+    const value = Object.assign({}, this.get());
+    value.user = value.User;
+    delete value.User;
+    delete value.UserId;
+    delete value.PostId;
+    return value;
   };
   return Comment;
 };
