@@ -1,10 +1,11 @@
 'use strict';
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [{
       email: 'admin@candovue.com',
-      password: 'admin123',
+      password: bcrypt.hashSync('admin123'),
       name: 'Admin',
       isAdmin: true,
       createdAt: new Date(),
