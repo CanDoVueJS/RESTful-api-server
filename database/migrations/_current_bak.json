@@ -1,70 +1,5 @@
 {
     "tables": {
-        "Comments": {
-            "tableName": "Comments",
-            "schema": {
-                "id": {
-                    "allowNull": false,
-                    "primaryKey": true,
-                    "autoIncrement": true,
-                    "field": "id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "contents": {
-                    "allowNull": false,
-                    "validate": {
-                        "len": {
-                            "args": [
-                                1,
-                                255
-                            ],
-                            "msg": "댓글은 최소 1자 이상 최대 255자 이하여야 합니다."
-                        }
-                    },
-                    "field": "contents",
-                    "seqType": "Sequelize.STRING"
-                },
-                "createdAt": {
-                    "defaultValue": {
-                        "internal": true,
-                        "value": "Sequelize.Literal"
-                    },
-                    "field": "createdAt",
-                    "seqType": "Sequelize.TIME"
-                },
-                "updatedAt": {
-                    "defaultValue": {
-                        "internal": true,
-                        "value": "Sequelize.Literal"
-                    },
-                    "field": "updatedAt",
-                    "seqType": "Sequelize.TIME"
-                },
-                "PostId": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "Posts",
-                        "key": "id"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "PostId",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "UserId": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "UserId",
-                    "seqType": "Sequelize.INTEGER"
-                }
-            },
-            "indexes": []
-        },
         "Posts": {
             "tableName": "Posts",
             "schema": {
@@ -76,28 +11,26 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "title": {
-                    "allowNull": false,
                     "validate": {
                         "len": {
                             "args": [
-                                1,
+                                0,
                                 255
                             ],
-                            "msg": "게시물의 제목은 최소 1자 이상 최대 255자 이하여야 합니다."
+                            "msg": "포스트 제목이 너무 깁니다"
                         }
                     },
                     "field": "title",
                     "seqType": "Sequelize.STRING"
                 },
                 "contents": {
-                    "allowNull": false,
                     "validate": {
                         "len": {
                             "args": [
-                                1,
+                                0,
                                 500
                             ],
-                            "msg": "게시물의 내용은 최소 1자 이상 최대 500자 이하여야 합니다."
+                            "msg": "포스트는 최소 1자 이상 최대 500자 이하여야 합니다."
                         }
                     },
                     "field": "contents",
@@ -200,5 +133,5 @@
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }
