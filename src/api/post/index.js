@@ -67,7 +67,10 @@ router.put('/:id', isAuthenticated(), async (req, res) => {
   const user = req.user;
   const post = await Post.findByPk(id);
 
-  if (!post.isMyPost(user)) {
+  if (!post) {
+    res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
+  }
+  else if (!post.isMyPost(user)) {
     res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 수정하실 수 없습니다.' });
   }
 
@@ -97,7 +100,10 @@ router.delete('/:id', isAuthenticated(), async (req, res) => {
   const user = req.user;
   const post = await Post.findByPk(id);
 
-  if (!post.isMyPost(user)) {
+  if (!post) {
+    res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
+  }
+  else if (!post.isMyPost(user)) {
     res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 삭제하실 수 없습니다.' });
   }
 
