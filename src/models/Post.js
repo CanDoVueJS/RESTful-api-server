@@ -52,5 +52,9 @@ module.exports = (sequelize, DataTypes) => {
     const value = Object.assign({}, this.get());
     return user.id === value.UserId;
   };
+  Post.prototype.hasComment = async function (commentId) {
+    const comments = await this.getComments();
+    return comments.some(comment => comment.dataValues.id.toString() === commentId);
+  };
   return Post;
 };
