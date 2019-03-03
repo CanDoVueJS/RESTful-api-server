@@ -26,10 +26,15 @@ app.use(bodyParser.json({
 app.use(middleware({ config }));
 
 // api router
+app.get('/', function (req, res) {
+  res.send('API 서버가 정상적으로 실행되고 있습니다.');
+});
 app.use('/api', api({ config }));
 
 app.server.listen(process.env.PORT || config.port, () => {
-  console.log(`Started on port ${app.server.address().port}`);
+  console.log('=======================================================================================================');
+  console.log(`API 서버가 성공적으로 실행되었습니다. 브라우저를 통해 localhost:${app.server.address().port}에 접속해보세요!`);
+  console.log('=======================================================================================================');
 });
 
 export default app;
