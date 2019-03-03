@@ -1,8 +1,15 @@
-import { User, Post } from '../models';
+import { User, Post, Comment } from '../../models/index';
 import { Router } from 'express';
-import { isAuthenticated } from '../lib/jwt';
+import CommentView from './comment';
+import { isAuthenticated } from '../../lib/jwt';
 
 const router = Router();
+const includeOption = [{ all: true }, {
+  model: Comment,
+  include: {
+    model: User,
+  },
+}];
 
 router.post('/', isAuthenticated(), async (req, res) => {
   try {
@@ -31,11 +38,12 @@ router.post('/', isAuthenticated(), async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.findAll({
-      include: { model: User },
+      include: includeOption,
     });
     res.status(200).json(posts);
   }
   catch (e) {
+    console.log(e);
     res.status(500).json(e);
   }
 });
@@ -45,7 +53,7 @@ router.get('/:id', async (req, res) => {
   try {
     const post = await Post.findOne({
       where: { id },
-      include: { model: User },
+      include: includeOption,
     });
     res.status(200).json(post);
   }
@@ -59,7 +67,10 @@ router.put('/:id', isAuthenticated(), async (req, res) => {
   const user = req.user;
   const post = await Post.findByPk(id);
 
-  if (!post.isMyPost(user)) {
+  if (!post) {
+    res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
+  }
+  else if (!post.isMyPost(user)) {
     res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 수정하실 수 없습니다.' });
   }
 
@@ -70,7 +81,7 @@ router.put('/:id', isAuthenticated(), async (req, res) => {
 
     const updatedPost = await Post.findOne({
       where: { id },
-      include: { model: User },
+      include: includeOption,
     });
     res.status(200).json(updatedPost);
   }
@@ -89,7 +100,10 @@ router.delete('/:id', isAuthenticated(), async (req, res) => {
   const user = req.user;
   const post = await Post.findByPk(id);
 
-  if (!post.isMyPost(user)) {
+  if (!post) {
+    res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
+  }
+  else if (!post.isMyPost(user)) {
     res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 삭제하실 수 없습니다.' });
   }
 
@@ -101,5 +115,20 @@ router.delete('/:id', isAuthenticated(), async (req, res) => {
     res.status(500).json(e);
   }
 });
+
+router.use('/:postId', async (req, res, next) => {
+  const postId = req.params.postId;
+  try {
+    const post = await Post.findByPk(postId);
+    if (!post) {
+      res.status(404);
+    }
+    req.post = post;
+    next();
+  }
+  catch (e) {
+    res.status(500).json(e);
+  }
+}, CommentView);
 
 export default router;

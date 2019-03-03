@@ -1,12 +1,11 @@
 import { version } from '../../package.json';
 import { Router } from 'express';
 import passportLib from '../lib/passport';
-// import { isAuthenticated } from '../lib/jwt';
 
 /** @desv Views */
-import AuthView from './Auth';
-import UserView from './User';
-import PostView from './Post';
+import AuthView from './auth';
+import UserView from './user';
+import PostView from './post';
 
 export default ({ config }) => {
   passportLib.init();

@@ -35,17 +35,26 @@ module.exports = (sequelize, DataTypes) => {
   Post.associate = function (models) {
     // associations can be defined here
     Post.belongsTo(models.User);
+    Post.hasMany(models.Comment);
   };
   Post.prototype.toJSON = function () {
     const value = Object.assign({}, this.get());
     value.user = value.User;
+    value.comments = value.Comments;
+
     delete value.User;
+    delete value.Comments;
     delete value.UserId;
+
     return value;
   };
   Post.prototype.isMyPost = function (user) {
     const value = Object.assign({}, this.get());
     return user.id === value.UserId;
+  };
+  Post.prototype.hasComment = async function (commentId) {
+    const comments = await this.getComments();
+    return comments.some(comment => comment.dataValues.id.toString() === commentId);
   };
   return Post;
 };
