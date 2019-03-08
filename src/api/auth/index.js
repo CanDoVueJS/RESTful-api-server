@@ -28,7 +28,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/signin', (req, res, next) => {
   try {
     passport.authenticate('local', (err, user, info) => {
       const error = err || info;
