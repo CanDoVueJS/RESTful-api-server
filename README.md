@@ -30,5 +30,5 @@ npm install -g sequelize-cli
 
 4. 서버를 실행하세요
 ```sh
-PORT=8080 npm run dev
+PORT=8000 npm run dev
 ```
