@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       allowNull: false,
       type: DataTypes.STRING,
-      unique: true,
+      unique: {
+        args: true,
+        msg: '이미 가입된 이메일 입니다.',
+      },
       validate: {
         isEmail: {
           msg: '올바르지 않은 이메일 입니다.',
@@ -30,9 +33,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
       validate: {
-        len: {
-          args: [0, 30],
-          msg: '이름이 너무 깁니다',
+        isEven: function (value) {
+          if (value.length <= 2) {
+            throw new Error('이름은 최소 2자 이상 입력해주세요.');
+          }
+          if (value.length > 10) {
+            throw new Error('이름은 최대 10자 이내로 입력해주세요.');
+          }
         },
       },
     },

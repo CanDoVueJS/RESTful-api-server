@@ -15,13 +15,10 @@ router.post('/signup', async (req, res) => {
     res.status(201).json({});
   }
   catch (e) {
-    if (e.name === 'SequelizeUniqueConstraintError') {
-      res.status(400).json({ msg: '이미 가입된 이메일 입니다' });
-    }
-    else if (e.name === 'SequelizeValidationError') {
-      res.status(400).json({ msg: '잘못된 요청 입니다' });
-    }
-    else {
+    const isSequelizeValidateError = e.name === 'SequelizeValidationError' || e.name === 'SequelizeUniqueConstraintError';
+    if (isSequelizeValidateError) {
+      res.status(400).json({ msg: e.errors[0].message });
+    } else {
       console.error(e);
       res.status(500).json(e);
     }
