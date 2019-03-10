@@ -30,7 +30,7 @@ router.post('/signin', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
       const error = err || info;
       if (error) {
-        return res.status(400).json({ msg: '존재하지 않는 이메일 입니다.' });
+        return res.status(400).json({ msg: error.message });
       }
 
       const accessToken = generateToken({
