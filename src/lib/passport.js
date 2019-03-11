@@ -7,6 +7,10 @@ export default {
     passport.use(new LocalStrategy.Strategy(
       { usernameField: 'email', passwordField: 'password' },
       async function (email, password, done) {
+        const rEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+        if (!rEmail.test(email)) {
+          return done({ message: '올바른 이메일 형식이 아닙니다' }, false, {});
+        }
         // 인증 정보 체크 로직
         try {
           const user = await User.findOne({
