@@ -30,6 +30,7 @@ app.get('/', function (req, res) {
   res.send('API 서버가 정상적으로 실행되고 있습니다.');
 });
 app.use('/api', api({ config }));
+app.use('/assets', express.static('src/assets'));
 
 app.server.listen(process.env.PORT || config.port, () => {
   console.log('=======================================================================================================');
