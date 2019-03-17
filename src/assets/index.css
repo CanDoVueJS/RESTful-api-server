@@ -1,3 +1,122 @@
-div {
-  background-color: red;
+html, body {
+  height: 100%;
+  background-color: #f9f9f9;
+}
+html, body, div, input, fieldset, form, h1, p, textarea, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+textarea {
+  border: none;
+  resize: none;
+}
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+  height: 100%;
+}
+
+/* 회원가입 폼 관련 CSS */
+.sign-up-page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 456px;
+  height: 372px;
+  margin: -186px 0 0 -228px;
+  padding: 45px 60px 60px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+}
+.sign-up-page h3 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.sign-up-page form fieldset input {
+  margin-bottom: 8px;
+}
+.sign-up-page form fieldset input[type="text"], .sign-up-page form fieldset input[type="password"] {
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  margin-bottom: 8px;
+  padding: 5px 12px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 14px;
+}
+.sign-up-page form fieldset button[type="submit"] {
+  width: 100%;
+  margin: 16px 0 8px;
+  padding: .5rem .75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .25rem;
+  background-color: #414141;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.sign-up-page form fieldset button[type="submit"]:hover {
+  background-color: #181818;
+}
+.sign-up-page > p {
+  font-size: 14px;
+  text-align: left;
+}
+/* 로그인 관련 CSS */
+.sign-in-page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 456px;
+  height: 330px;
+  margin: -165px 0 0 -228px;
+  padding: 45px 60px 60px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+}
+.sign-in-page h3 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.sign-in-page form fieldset input {
+  margin-bottom: 8px;
+}
+.sign-in-page form fieldset input[type="text"], .sign-in-page form fieldset input[type="password"] {
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  margin-bottom: 8px;
+  padding: 5px 12px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 14px;
+}
+.sign-in-page form fieldset input[type="password"] {
+  margin-bottom: 16px;
+}
+.sign-in-page form fieldset button[type="submit"] {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: .5rem .75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .25rem;
+  background-color: #414141;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.sign-in-page form fieldset button[type="submit"]:hover {
+  background-color: #181818;
+}
+.sign-in-page > p {
+  font-size: 14px;
+  text-align: left;
+
 }
