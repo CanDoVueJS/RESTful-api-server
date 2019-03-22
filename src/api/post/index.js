@@ -12,13 +12,20 @@ const includeOption = [{ all: true }, {
 }];
 
 router.post('/', isAuthenticated(), async (req, res) => {
+  const { title, contents } = req.body;
+  if (!title) {
+    return res.status(400).json({ msg: '게시물 제목을 입력해주세요.' });
+  }
+  else if (!contents) {
+    return res.status(400).json({ msg: '게시물 내용을 입력해주세요.' });
+  }
   try {
     const newPost = await Post.create({
       UserId: req.user.id,
       title: req.body.title,
       contents: req.body.contents,
     });
-    res.status(201).json({
+    return res.status(201).json({
       id: newPost.id,
       title: newPost.title,
       contents: newPost.contents,
@@ -27,10 +34,10 @@ router.post('/', isAuthenticated(), async (req, res) => {
   }
   catch (e) {
     if (e.name === 'SequelizeValidationError') {
-      res.status(400).json({ msg: '잘못된 요청 입니다' });
+      return res.status(400).json({ msg: e.errors[0].message });
     }
     else {
-      res.status(500).json(e);
+      return res.status(500).json(e);
     }
   }
 });
@@ -40,11 +47,11 @@ router.get('/', async (req, res) => {
     const posts = await Post.findAll({
       include: includeOption,
     });
-    res.status(200).json(posts);
+    return res.status(200).json(posts);
   }
   catch (e) {
     console.log(e);
-    res.status(500).json(e);
+    return res.status(500).json(e);
   }
 });
 
@@ -55,10 +62,10 @@ router.get('/:id', async (req, res) => {
       where: { id },
       include: includeOption,
     });
-    res.status(200).json(post);
+    return res.status(200).json(post);
   }
   catch (e) {
-    res.status(500).json(e);
+    return res.status(500).json(e);
   }
 });
 
@@ -68,10 +75,18 @@ router.put('/:id', isAuthenticated(), async (req, res) => {
   const post = await Post.findByPk(id);
 
   if (!post) {
-    res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
+    return res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
   }
   else if (!post.isMyPost(user)) {
-    res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 수정하실 수 없습니다.' });
+    return res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 수정하실 수 없습니다.' });
+  }
+
+  const { title, contents } = req.body;
+  if (!title) {
+    return res.status(400).json({ msg: '게시물 제목을 입력해주세요.' });
+  }
+  else if (!contents) {
+    return res.status(400).json({ msg: '게시물 내용을 입력해주세요.' });
   }
 
   try {
@@ -83,14 +98,14 @@ router.put('/:id', isAuthenticated(), async (req, res) => {
       where: { id },
       include: includeOption,
     });
-    res.status(200).json(updatedPost);
+    return res.status(200).json(updatedPost);
   }
   catch (e) {
     if (e.name === 'SequelizeValidationError') {
-      res.status(400).json({ msg: '잘못된 요청 입니다' });
+      return res.status(400).json({ msg: e.errors[0].message });
     }
     else {
-      res.status(500).json(e);
+      return res.status(500).json(e);
     }
   }
 });
@@ -101,18 +116,18 @@ router.delete('/:id', isAuthenticated(), async (req, res) => {
   const post = await Post.findByPk(id);
 
   if (!post) {
-    res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
+    return res.status(404).json({ msg: '존재하지 않는 게시물입니다.' });
   }
   else if (!post.isMyPost(user)) {
-    res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 삭제하실 수 없습니다.' });
+    return res.status(403).json({ msg: '자신의 게시물이 아닌 게시물은 삭제하실 수 없습니다.' });
   }
 
   try {
     post.destroy();
-    res.status(204).json({});
+    return res.status(204).json({});
   }
   catch (e) {
-    res.status(500).json(e);
+    return res.status(500).json(e);
   }
 });
 
@@ -121,13 +136,13 @@ router.use('/:postId', async (req, res, next) => {
   try {
     const post = await Post.findByPk(postId);
     if (!post) {
-      res.status(404);
+      return res.status(404);
     }
     req.post = post;
     next();
   }
   catch (e) {
-    res.status(500).json(e);
+    return res.status(500).json(e);
   }
 }, CommentView);
 
