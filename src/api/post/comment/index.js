@@ -1,4 +1,3 @@
-import { Comment } from '../../../models/index';
 import { Router } from 'express';
 import { isAuthenticated } from '../../../lib/jwt';
 
