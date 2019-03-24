@@ -74,7 +74,7 @@ router.put('/comments/:commentId', isAuthenticated(), async (req, res) => {
   }
   catch (e) {
     if (e.name === 'SequelizeValidationError') {
-      return res.status(400).json({ msg: '잘못된 요청 입니다' });
+      return res.status(400).json({ msg: e.errors[0].message });
     }
     else {
       return res.status(500).json(e);
