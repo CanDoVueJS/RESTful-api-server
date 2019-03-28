@@ -25,7 +25,7 @@ function isAuthenticated () {
     .use(async function (req, res, next) {
       // Attach user to request
       try {
-        const user = await User.findById(req.user.id);
+        const user = await User.findByPk(req.user.id);
         req.user = user;
         next();
       }

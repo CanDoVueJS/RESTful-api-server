@@ -21,7 +21,7 @@ router.get('/me', isAuthenticated(), async (req, res) => {
 router.get('/:id', async (req, res) => {
   const userId = req.params.id;
   try {
-    const user = await User.findById(userId);
+    const user = await User.findByPk(userId);
     return res.status(200).json(user);
   }
   catch (e) {
