@@ -1,3 +1,5 @@
+import format from 'date-fns/format';
+
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
     title: {
@@ -23,10 +25,16 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
+      get () {
+        return format(this.getDataValue('createdAt'), 'YYYY-MM-DD HH:mm');
+      },
     },
     updatedAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
+      get () {
+        return format(this.getDataValue('updatedAt'), 'YYYY-MM-DD HH:mm');
+      },
     },
   }, {
     tableName: 'Posts',
