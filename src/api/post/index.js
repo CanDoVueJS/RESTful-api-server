@@ -62,7 +62,12 @@ router.get('/:id', async (req, res) => {
       where: { id },
       include: includeOption,
     });
-    return res.status(200).json(post);
+    if (post) {
+      return res.status(200).json(post);
+    }
+    else {
+      return res.status(404).json({ msg: '포스트가 존재하지 않습니다.' });
+    }
   }
   catch (e) {
     return res.status(500).json(e);
