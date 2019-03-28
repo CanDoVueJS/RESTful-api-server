@@ -1,3 +1,5 @@
+@import "https://use.fontawesome.com/releases/v5.6.3/css/all.css";
+
 html, body {
   height: 100%;
   background-color: #f9f9f9;
@@ -11,6 +13,11 @@ html, body, div, input, fieldset, form, h1, p, textarea, button {
 textarea {
   border: none;
   resize: none;
+}
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -28,7 +35,7 @@ textarea {
   left: 50%;
   top: 50%;
   width: 456px;
-  height: 372px;
+  height: 396px;
   margin: -186px 0 0 -228px;
   padding: 45px 60px 60px;
   background-color: #fff;
@@ -118,5 +125,59 @@ textarea {
 .sign-in-page > p {
   font-size: 14px;
   text-align: left;
+}
 
+/* 헤더 컴포넌트 관련 CSS */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #ededed;
+  background-color: #fff;
+}
+.app-header h1 {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  font-size: 26px;
+}
+.app-header > div {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.app-header > div > strong > button {
+  font-size: 14px;
+}
+.app-header > div > strong > button:focus {
+  outline: none;
+}
+.app-header > div > strong > button > i {
+  padding-left: 8px;
+}
+.app-header > div > strong > button > .fa-sort-up {
+  margin-bottom: -1px;
+  vertical-align: bottom;
+}
+.app-header > div > strong > button > .fa-sort-down {
+  margin-top: -1px;
+  vertical-align: top;
+}
+.app-header > div > ul {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+}
+.app-header > div > ul > li > button {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+.app-header > div > ul > li > button:focus {
+  outline: none;
 }
