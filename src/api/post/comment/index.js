@@ -9,11 +9,23 @@ router.post('/comments', isAuthenticated(), async (req, res) => {
     return res.status(400).json({ msg: '댓글 내용을 입력해주세요.' });
   }
   try {
-    await req.post.createComment({
+    const newComment = await req.post.createComment({
       UserId: req.user.id,
       contents: req.body.contents,
     });
-    return res.status(201).json({});
+    return res.status(201).json({
+      test: newComment,
+      id: newComment.id,
+      contents: newComment.contents,
+      createdAt: newComment.createdAt,
+      updatedAt: newComment.updatedAt,
+      user: {
+        email: req.user.email,
+        id: req.user.id,
+        isAdmin: req.user.isAdmin,
+        name: req.user.name
+      },
+    });
   }
   catch (e) {
     if (e.name === 'SequelizeValidationError') {
