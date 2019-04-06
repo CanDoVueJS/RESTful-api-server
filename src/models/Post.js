@@ -1,4 +1,5 @@
-import format from 'date-fns/format';
+const format = require('date-fns/format');
+const toKST = require('../lib/date');
 
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
@@ -26,14 +27,14 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
       get () {
-        return format(this.getDataValue('createdAt'), 'YYYY-MM-DD HH:mm');
+        return toKST(this.getDataValue('createdAt'));
       },
     },
     updatedAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
       get () {
-        return format(this.getDataValue('updatedAt'), 'YYYY-MM-DD HH:mm');
+        return toKST(this.getDataValue('updatedAt'));
       },
     },
   }, {

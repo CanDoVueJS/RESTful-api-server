@@ -1,3 +1,6 @@
+const format = require('date-fns/format');
+const toKST = require('../lib/date');
+
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
     contents: {
@@ -13,10 +16,16 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
+      get () {
+        return toKST(this.getDataValue('createdAt'));
+      },
     },
     updatedAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
+      get () {
+        return toKST(this.getDataValue('updatedAt'));
+      },
     },
   }, {
     tableName: 'Comments',

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { isAuthenticated } from '../../../lib/jwt';
+import { Comment, User } from '../../../models/index';
 
 const router = Router({ mergeParams: true });
 
@@ -13,19 +14,11 @@ router.post('/comments', isAuthenticated(), async (req, res) => {
       UserId: req.user.id,
       contents: req.body.contents,
     });
-    return res.status(201).json({
-      test: newComment,
-      id: newComment.id,
-      contents: newComment.contents,
-      createdAt: newComment.createdAt,
-      updatedAt: newComment.updatedAt,
-      user: {
-        email: req.user.email,
-        id: req.user.id,
-        isAdmin: req.user.isAdmin,
-        name: req.user.name
-      },
+    const createdComment = await Comment.findOne({
+      where: { id: newComment.id },
+      include: [ User ],
     });
+    return res.status(201).json(createdComment);
   }
   catch (e) {
     if (e.name === 'SequelizeValidationError') {
@@ -63,7 +56,7 @@ router.delete('/comments/:commentId', isAuthenticated(), async (req, res) =>{
 });
 
 router.put('/comments/:commentId', isAuthenticated(), async (req, res) => {
-  const id = req.params.commentId;
+  const id = parseInt(req.params.commentId);
   const user = req.user;
   const comments = await req.post.getComments();
   const comment = comments.find(comment => comment.id === id);
@@ -81,7 +74,11 @@ router.put('/comments/:commentId', isAuthenticated(), async (req, res) => {
   try {
     comment.contents = req.body.contents;
     await comment.save();
-    return res.status(200).json({});
+    const updatedComment = await Comment.findOne({
+      where: { id: comment.id },
+      include: [ User ],
+    });
+    return res.status(200).json(updatedComment);
   }
   catch (e) {
     if (e.name === 'SequelizeValidationError') {
