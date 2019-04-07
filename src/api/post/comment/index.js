@@ -31,7 +31,7 @@ router.post('/comments', isAuthenticated(), async (req, res) => {
 });
 
 router.delete('/comments/:commentId', isAuthenticated(), async (req, res) =>{
-  const id = req.params.commentId;
+  const id = parseInt(req.params.commentId);
   const user = req.user;
   const comments = await req.post.getComments();
   const comment = comments.find(comment => comment.id === id);
