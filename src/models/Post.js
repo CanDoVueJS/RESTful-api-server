@@ -1,5 +1,5 @@
 const format = require('date-fns/format');
-const toKST = require('../lib/date');
+const addHour = require('date-fns/add_hours');
 
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
@@ -27,14 +27,16 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
       get () {
-        return toKST(this.getDataValue('createdAt'));
+        const t = addHour(this.getDataValue('createdAt'), 9);
+        return format(t, 'YYYY-MM-DD HH:mm');
       },
     },
     updatedAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
       get () {
-        return toKST(this.getDataValue('updatedAt'));
+        const t = addHour(this.getDataValue('updatedAt'), 9);
+        return format(t, 'YYYY-MM-DD HH:mm');
       },
     },
   }, {

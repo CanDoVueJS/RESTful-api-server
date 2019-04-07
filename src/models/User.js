@@ -1,7 +1,7 @@
 'use strict';
 const format = require('date-fns/format');
+const addHour = require('date-fns/add_hours');
 const bcrypt = require('bcrypt-nodejs');
-const toKST = require('../lib/date');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -53,14 +53,16 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
       get () {
-        return toKST(this.getDataValue('createdAt'));
+        const t = addHour(this.getDataValue('createdAt'), 9);
+        return format(t, 'YYYY-MM-DD HH:mm');
       },
     },
     updatedAt: {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       type: DataTypes.TIME,
       get () {
-        return toKST(this.getDataValue('updatedAt'));
+        const t = addHour(this.getDataValue('updatedAt'), 9);
+        return format(t, 'YYYY-MM-DD HH:mm');
       },
     },
   }, {
