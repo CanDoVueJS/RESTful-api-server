@@ -1,14 +1,18 @@
-@import "https://use.fontawesome.com/releases/v5.6.3/css/all.css";
+@import url(https://use.fontawesome.com/releases/v5.6.3/css/all.css);
 
 html, body {
   height: 100%;
   background-color: #f9f9f9;
 }
-html, body, div, input, fieldset, form, h1, p, textarea, button {
+html, body, div, input, fieldset, form, h1, p, table, thead, th, tbody, td, textarea, button, dl, dt, dd {
   margin: 0;
   padding: 0;
   border: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+table {
+  border-collapse: collapse;
 }
 textarea {
   border: none;
@@ -19,115 +23,27 @@ ul, li {
   padding: 0;
   list-style: none;
 }
+a {
+  font-size: 16px;
+}
+button {
+  font-size: 16px;
+  cursor: pointer;
+}
+input:disabled {
+  background-color: lightgrey;
+  cursor: not-allowed;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding-top: 60px;
   height: 100%;
 }
 
-/* 회원가입 폼 관련 CSS */
-.sign-up-page {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 456px;
-  height: 396px;
-  margin: -186px 0 0 -228px;
-  padding: 45px 60px 60px;
-  background-color: #fff;
-  border: 1px solid #ededed;
-}
-.sign-up-page h3 {
-  margin-bottom: 20px;
-  text-align: left;
-}
-.sign-up-page form fieldset input {
-  margin-bottom: 8px;
-}
-.sign-up-page form fieldset input[type="text"], .sign-up-page form fieldset input[type="password"] {
-  width: 100%;
-  height: calc(1.5em + .75rem + 2px);
-  margin-bottom: 8px;
-  padding: 5px 12px;
-  color: #495057;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  font-size: 14px;
-}
-.sign-up-page form fieldset button[type="submit"] {
-  width: 100%;
-  margin: 16px 0 8px;
-  padding: .5rem .75rem;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  border-radius: .25rem;
-  background-color: #414141;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-.sign-up-page form fieldset button[type="submit"]:hover {
-  background-color: #181818;
-}
-.sign-up-page > p {
-  font-size: 14px;
-  text-align: left;
-}
-/* 로그인 관련 CSS */
-.sign-in-page {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 456px;
-  height: 330px;
-  margin: -165px 0 0 -228px;
-  padding: 45px 60px 60px;
-  background-color: #fff;
-  border: 1px solid #ededed;
-}
-.sign-in-page h3 {
-  margin-bottom: 20px;
-  text-align: left;
-}
-.sign-in-page form fieldset input {
-  margin-bottom: 8px;
-}
-.sign-in-page form fieldset input[type="text"], .sign-in-page form fieldset input[type="password"] {
-  width: 100%;
-  height: calc(1.5em + .75rem + 2px);
-  margin-bottom: 8px;
-  padding: 5px 12px;
-  color: #495057;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  font-size: 14px;
-}
-.sign-in-page form fieldset input[type="password"] {
-  margin-bottom: 16px;
-}
-.sign-in-page form fieldset button[type="submit"] {
-  width: 100%;
-  margin-bottom: 8px;
-  padding: .5rem .75rem;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  border-radius: .25rem;
-  background-color: #414141;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-.sign-in-page form fieldset button[type="submit"]:hover {
-  background-color: #181818;
-}
-.sign-in-page > p {
-  font-size: 14px;
-  text-align: left;
-}
-
-/* 헤더 컴포넌트 관련 CSS */
 .app-header {
   position: fixed;
   top: 0;
@@ -170,7 +86,8 @@ ul, li {
   top: 44px;
   left: 0;
   width: 100%;
-  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
 }
 .app-header > div > ul > li > button {
   width: 100%;
@@ -181,3 +98,517 @@ ul, li {
 .app-header > div > ul > li > button:focus {
   outline: none;
 }
+
+.sign-up-page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 456px;
+  height: 396px;
+  margin: -186px 0 0 -228px;
+  padding: 45px 60px 60px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+}
+.sign-up-page h3 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.sign-up-page form fieldset input {
+  margin-bottom: 8px;
+}
+.sign-up-page form fieldset input[type="text"], .sign-up-page form fieldset input[type="password"] {
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  margin-bottom: 8px;
+  padding: 5px 12px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 14px;
+}
+.sign-up-page form fieldset button[type="submit"] {
+  width: 100%;
+  margin: 16px 0 8px;
+  padding: .5rem .75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .25rem;
+  background-color: #414141;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.sign-up-page form fieldset button[type="submit"]:hover {
+  background-color: #181818;
+}
+.sign-up-page > p {
+  font-size: 14px;
+  text-align: left;
+}
+
+.sign-in-page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 456px;
+  height: 330px;
+  margin: -165px 0 0 -228px;
+  padding: 45px 60px 60px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+}
+.sign-in-page h3 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.sign-in-page form fieldset input {
+  margin-bottom: 8px;
+}
+.sign-in-page form fieldset input[type="text"], .sign-in-page form fieldset input[type="password"] {
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  margin-bottom: 8px;
+  padding: 5px 12px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 14px;
+}
+.sign-in-page form fieldset input[type="password"] {
+  margin-bottom: 16px;
+}
+.sign-in-page form fieldset button[type="submit"] {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: .5rem .75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .25rem;
+  background-color: #414141;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.sign-in-page form fieldset button[type="submit"]:hover {
+  background-color: #181818;
+}
+.sign-in-page > p {
+  font-size: 14px;
+  text-align: left;
+}
+
+.board-list-page {
+  width: 940px;
+  margin: 60px auto 0;
+  padding: 40px 30px 60px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+}
+.board-list-page h1 {
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 24px;
+}
+.board-list-page > div {
+  background-color: #fff;
+}
+.board-list-page > div table {
+  width: 100%;
+}
+.board-list-page > div table thead {
+  font-size: 14px;
+  font-weight: normal;
+  color: #fff;
+  background-color: #888;
+}
+.board-list-page > div table thead th {
+  position: relative;
+  padding: 10px;
+}
+.board-list-page > div table thead th:after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: #c3b9b9;
+}
+.board-list-page > div table thead th:last-child:after {
+  content: '';
+}
+.board-list-page > div table tbody td {
+  padding: 20px;
+  font-weight: normal;
+  border-bottom: 1px solid #ededed;
+}
+.board-list-page > div table tbody td:nth-child(2) {
+  text-align: left;
+}
+.board-list-page > a {
+  margin-top: 13px;
+  float: right;
+  padding: .5rem 1.75rem;
+  background-color: #414141;
+  border-radius: .25rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.board-create-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 45px 60px 60px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+}
+.board-create-page h3 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.board-create-page form fieldset input {
+  margin-bottom: 8px;
+}
+.board-create-page label {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+}
+.board-create-page form fieldset input[type="text"],
+.board-create-page form fieldset textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 5px 12px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 14px;
+}
+.board-create-page form fieldset input[type="text"] {
+  height: calc(1.5em + .75rem + 2px);
+}
+.board-create-page form fieldset button[type="submit"] {
+  width: 100%;
+  margin: 16px 0 8px;
+  padding: .5rem .75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .25rem;
+  background-color: #414141;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.board-create-page form fieldset button[type="submit"]:hover {
+  background-color: #181818;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.post-edit-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 45px 60px 60px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+}
+.post-edit-page h3 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.post-edit-page form fieldset input {
+  margin-bottom: 8px;
+}
+.post-edit-page label {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+}
+.post-edit-page form fieldset input[type="text"],
+.post-edit-page form fieldset textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 5px 12px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 14px;
+}
+.post-edit-page form fieldset input[type="text"] {
+  height: calc(1.5em + .75rem + 2px);
+}
+.post-edit-page form fieldset button[type="submit"] {
+  width: 100%;
+  margin: 16px 0 8px;
+  padding: .5rem .75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .25rem;
+  background-color: #414141;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.post-edit-page form fieldset button[type="submit"]:hover {
+  background-color: #181818;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.board-view-page {
+  width: 940px;
+  margin: 60px auto 0;
+  padding: 40px 30px 60px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+  text-align: right;
+}
+.board-view-page h1 {
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 24px;
+}
+.board-view-page > p {
+  text-align: center;
+  margin: 1rem 0;
+}
+.board-view-page .board-view > div {
+  padding: 20px;
+  text-align: left;
+  background-color: #888;
+  color: #fff;
+  font-size: 14px;
+}
+.board-view-page .board-view > div > h1 {
+  font-size: 24px;
+}
+.board-view-page .board-view > div > span {
+  display: block;
+  margin-bottom: 2px;
+}
+.board-view-page .board-view > div > strong {
+  font-weight: normal;
+}
+.board-view-page .board-view > p {
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: left;
+}
+.board-view-page a, .board-view-page button {
+  display: inline-block;
+  padding: .5rem 1.75rem;
+  background-color: #414141;
+  border-radius: .25rem;
+  color: #fff;
+  text-decoration: none;
+}
+.board-view-page > ul {
+  text-align: left;
+  margin-top: 20px;
+  border-top: 1px solid #888;
+}
+.board-view-page > ul > li {
+  overflow: hidden;
+  padding: 20px;
+  border-bottom: 1px dotted #999;
+}
+.board-view-page > .comments .comment-item {
+  position: relative;
+}
+.board-view-page > .comments .comment-item > strong {
+  margin-right: 5px;
+}
+.board-view-page > .comments .comment-item > span {
+  font-size: 14px;
+  vertical-align: bottom;
+}
+.board-view-page > .comments .comment-item > p,
+.board-view-page > .comments .comment-item textarea,
+.board-view-page > .comments .comment-item textarea + button {
+  margin-top: .5rem;
+}
+.board-view-page > .comments .comment-item button:hover {
+  opacity: 0.6;
+}
+.board-view-page > .comments .comment-item textarea {
+  display: inline-block;
+  border: 1px solid #666;
+  width: 85%;
+  padding: 10px;
+  height: 60px;
+  vertical-align: top;
+}
+.board-view-page > .comments .comment-item textarea + button {
+  display: inline-block;
+  border: 1px solid #666;
+  padding: 10px;
+  width: 14%;
+  height: 60px;
+  background-color: #414141;
+  color: white;
+  border-radius: .25rem;
+  font-size: 1rem;
+}
+.board-view-page > .comments .comment-item > ul {
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+}
+.board-view-page > .comments .comment-item > ul li {
+  position: relative;
+  float: left;
+  padding: 0 10px 0 0;
+  margin: 0 10px 0 0;
+}
+.board-view-page > .comments .comment-item > ul li:after {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  content: "|";
+}
+.board-view-page > .comments .comment-item > ul li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+.board-view-page > .comments .comment-item > ul li:last-child:after {
+  content: "";
+}
+.comment-form {
+  position: relative;
+  margin-top: 20px;
+  padding-right: 100px;
+  overflow: hidden;
+}
+.comment-form textarea {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #666;
+  padding: 10px;
+}
+.comment-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 60px;
+  width: 96px;
+  background-color: #414141;
+  color: #fff;
+  font-size: 16px;
+}
+.comments button {
+  background-color: transparent;
+  color: black;
+  font-size: 12px;
+  padding: 0;
+  border-radius: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  outline: 0;
+}
+
+/*# sourceMappingURL=index.css.map*/
