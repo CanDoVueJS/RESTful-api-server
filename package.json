@@ -15,6 +15,7 @@
     "db:migrate:undoall": "npx sequelize db:migrate:undo:all",
     "db:seed": "npx sequelize db:seed:all",
     "db:seed:undo:all": "npx sequelize db:seed:undo:all",
+    "db:migrate:seed": "npm run db:migrate && npm run db:seed",
     "makemigration": "npx makemigration"
   },
   "repository": "CanDoVueJS/hot-place-share-api",
