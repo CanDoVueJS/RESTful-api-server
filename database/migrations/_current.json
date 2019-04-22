@@ -65,6 +65,29 @@
             },
             "indexes": []
         },
+        "Memos": {
+            "tableName": "Memos",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "title": {
+                    "allowNull": false,
+                    "field": "title",
+                    "seqType": "Sequelize.STRING"
+                },
+                "contents": {
+                    "allowNull": false,
+                    "field": "contents",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
         "Posts": {
             "tableName": "Posts",
             "schema": {
@@ -145,7 +168,10 @@
                 },
                 "email": {
                     "allowNull": false,
-                    "unique": true,
+                    "unique": {
+                        "args": true,
+                        "msg": "이미 가입된 이메일 입니다."
+                    },
                     "validate": {
                         "isEmail": {
                             "msg": "올바르지 않은 이메일 입니다."
@@ -161,15 +187,7 @@
                 },
                 "name": {
                     "allowNull": false,
-                    "validate": {
-                        "len": {
-                            "args": [
-                                0,
-                                30
-                            ],
-                            "msg": "이름이 너무 깁니다"
-                        }
-                    },
+                    "validate": {},
                     "field": "name",
                     "seqType": "Sequelize.STRING"
                 },
@@ -200,5 +218,5 @@
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 3
 }

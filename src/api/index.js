@@ -6,6 +6,7 @@ import passportLib from '../lib/passport';
 import AuthView from './auth';
 import UserView from './user';
 import PostView from './post';
+import MemoView from './memo';
 
 export default ({ config }) => {
   passportLib.init();
@@ -16,6 +17,7 @@ export default ({ config }) => {
   API.use('/auth', AuthView);
   API.use('/users', UserView);
   API.use('/posts', PostView);
+  API.use('/memos', MemoView);
 
   // perhaps expose some API metadata at the root
   API.get('/', (req, res) => {
