@@ -6,10 +6,10 @@ const router = Router();
 router.post('/', async (req, res) => {
   const { title, contents } = req.body;
   if (!title) {
-    return res.status(400).json({ msg: '게시물 제목을 입력해주세요.' });
+    return res.status(400).json({ msg: '메모 제목을 입력해주세요.' });
   }
   else if (!contents) {
-    return res.status(400).json({ msg: '게시물 내용을 입력해주세요.' });
+    return res.status(400).json({ msg: '메모 내용을 입력해주세요.' });
   }
   try {
     const newMemo = await Memo.create({
