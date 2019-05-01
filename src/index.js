@@ -19,7 +19,7 @@ app.use(cors({
   exposedHeaders: config.corsHeaders,
 }));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
 // internal middleware
 app.use(middleware({ config }));

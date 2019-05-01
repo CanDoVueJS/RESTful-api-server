@@ -4,17 +4,18 @@ import { Router } from 'express';
 const router = Router();
 
 router.post('/', async (req, res) => {
-  const { title, contents } = req.body;
+  console.log(req.body);
+  const { title, content } = req.body;
   if (!title) {
     return res.status(400).json({ msg: '메모 제목을 입력해주세요.' });
   }
-  else if (!contents) {
+  else if (!content) {
     return res.status(400).json({ msg: '메모 내용을 입력해주세요.' });
   }
   try {
     const newMemo = await Memo.create({
       title: req.body.title,
-      contents: req.body.contents,
+      contents: req.body.content,
     });
     return res.status(201).json({
       id: newMemo.id,
