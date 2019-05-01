@@ -68,16 +68,12 @@ router.put('/:id', async (req, res) => {
     return res.status(404).json({});
   }
 
-  const { title, content } = req.body;
-  if (!title) {
-    return res.status(400).json({ msg: '메모 제목을 입력해주세요.' });
-  }
-  else if (!content) {
+  const { content } = req.body;
+  if (!content) {
     return res.status(400).json({ msg: '메모 내용을 입력해주세요.' });
   }
 
   try {
-    memo.title = req.body.title;
     memo.content = req.body.content;
     await memo.save();
     return res.status(200).json(memo);
