@@ -36,9 +36,9 @@ var migrationCommands = [{
                     "field": "title",
                     "allowNull": false
                 },
-                "contents": {
+                "content": {
                     "type": Sequelize.STRING,
-                    "field": "contents",
+                    "field": "content",
                     "allowNull": false
                 }
             },
