@@ -15,12 +15,12 @@ router.post('/', async (req, res) => {
   try {
     const newMemo = await Memo.create({
       title: req.body.title,
-      contents: req.body.content,
+      content: req.body.content,
     });
     return res.status(201).json({
       id: newMemo.id,
       title: newMemo.title,
-      contents: newMemo.contents,
+      content: newMemo.content,
     });
   }
   catch (e) {
@@ -68,17 +68,17 @@ router.put('/:id', async (req, res) => {
     return res.status(404).json({});
   }
 
-  const { title, contents } = req.body;
+  const { title, content } = req.body;
   if (!title) {
     return res.status(400).json({ msg: '메모 제목을 입력해주세요.' });
   }
-  else if (!contents) {
+  else if (!content) {
     return res.status(400).json({ msg: '메모 내용을 입력해주세요.' });
   }
 
   try {
     memo.title = req.body.title;
-    memo.contents = req.body.contents;
+    memo.content = req.body.content;
     await memo.save();
     return res.status(200).json(memo);
   }
