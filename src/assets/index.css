@@ -209,57 +209,57 @@ input:disabled {
 /**
  * 포스트 리스트 페이지
  */
-.board-list-page {
+.post-list-page {
   width: 940px;
   margin: 60px auto 0;
   padding: 40px 30px 60px;
   background-color: #fff;
   box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
 }
-.board-list-page:after {
+.post-list-page:after {
   content: "";
   display: block;
   clear: both;
 }
-.board-list-page h1 {
+.post-list-page h1 {
   margin-bottom: 20px;
   text-align: left;
   font-size: 24px;
 }
-.board-list-page > div {
+.post-list-page > div {
   background-color: #fff;
 }
-.board-list-page > div table {
+.post-list-page > div table {
   width: 100%;
 }
-.board-list-page > div table thead {
+.post-list-page > div table thead {
   font-size: 14px;
   font-weight: normal;
   color: #fff;
   background-color: #888;
 }
-.board-list-page > div table thead th {
+.post-list-page > div table thead th {
   position: relative;
   padding: 10px;
 }
-.board-list-page > div table thead th:after {
+.post-list-page > div table thead th:after {
   content: '|';
   position: absolute;
   right: 0;
   color: #c3b9b9;
 }
-.board-list-page > div table thead th:last-child:after {
+.post-list-page > div table thead th:last-child:after {
   content: '';
 }
-.board-list-page > div table tbody td {
+.post-list-page > div table tbody td {
   padding: 20px;
   font-weight: normal;
   border-bottom: 1px solid #ededed;
 }
-.board-list-page > div table tbody td:nth-child(2) {
+.post-list-page > div table tbody td:nth-child(2) {
   text-align: left;
 }
-.board-list-page > a {
+.post-list-page > a {
   margin-top: 13px;
   float: right;
   padding: .5rem 1.75rem;
@@ -269,14 +269,14 @@ input:disabled {
   text-decoration: none;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.board-list-page > a:hover {
+.post-list-page > a:hover {
   background-color: #181818;
 }
 
 /**
  * 포스트 상세보기 페이지
  */
-.board-view-page {
+.post-view-page {
   width: 940px;
   margin: 60px auto 0;
   padding: 40px 30px 60px;
@@ -284,39 +284,39 @@ input:disabled {
   box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
   text-align: right;
 }
-.board-view-page h1 {
+.post-view-page h1 {
   margin-bottom: 12px;
   text-align: left;
   font-size: 24px;
 }
-.board-view-page > p {
+.post-view-page > p {
   text-align: center;
   margin: 1rem 0;
 }
-.board-view-page .board-view > div {
+.post-view-page .board-view > div {
   padding: 20px;
   text-align: left;
   font-size: 14px;
   border-bottom: 2px solid #868e96;
 }
-.board-view-page .board-view > div > h1 {
+.post-view-page .board-view > div > h1 {
   font-size: 24px;
 }
-.board-view-page .board-view > div > span {
+.post-view-page .board-view > div > span {
   display: block;
   margin-bottom: 2px;
   color: #868e96;
 }
-.board-view-page .board-view > div > strong {
+.post-view-page .board-view > div > strong {
   font-weight: normal;
   color: #868e96;
 }
-.board-view-page .board-view > p {
+.post-view-page .board-view > p {
   margin-bottom: 20px;
   padding: 20px;
   text-align: left;
 }
-.board-view-page a, .board-view-page button {
+.post-view-page a, .post-view-page button {
   display: inline-block;
   padding: .5rem 1.75rem;
   background-color: #414141;
@@ -325,35 +325,35 @@ input:disabled {
   text-decoration: none;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.board-view-page > a:hover, .board-view-page > button:hover {
+.post-view-page > a:hover, .post-view-page > button:hover {
   background-color: #181818;
 }
-.board-view-page > ul {
+.post-view-page > ul {
   text-align: left;
   margin-top: 20px;
   border-top: 1px solid #ced4da;
 }
-.board-view-page > ul > li {
+.post-view-page > ul > li {
   overflow: hidden;
   padding: 20px;
   border-bottom: 1px solid #ced4da;
 }
-.board-view-page > .comments .comment-item {
+.post-view-page > .comments .comment-item {
   position: relative;
 }
-.board-view-page > .comments .comment-item > strong {
+.post-view-page > .comments .comment-item > strong {
   margin-right: 5px;
 }
-.board-view-page > .comments .comment-item > span {
+.post-view-page > .comments .comment-item > span {
   font-size: 14px;
   vertical-align: bottom;
 }
-.board-view-page > .comments .comment-item > p,
-.board-view-page > .comments .comment-item textarea,
-.board-view-page > .comments .comment-item textarea + button {
+.post-view-page > .comments .comment-item > p,
+.post-view-page > .comments .comment-item textarea,
+.post-view-page > .comments .comment-item textarea + button {
   margin-top: .5rem;
 }
-.board-view-page > .comments .comment-item textarea {
+.post-view-page > .comments .comment-item textarea {
   display: inline-block;
   border: 1px solid #868e96;
   width: 85%;
@@ -362,7 +362,7 @@ input:disabled {
   vertical-align: top;
   font-size: 14px;
 }
-.board-view-page > .comments .comment-item textarea + button {
+.post-view-page > .comments .comment-item textarea + button {
   display: inline-block;
   border: 1px solid #666;
   padding: 10px;
@@ -374,39 +374,39 @@ input:disabled {
   font-size: 1rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.board-view-page > .comments .comment-item textarea + button:hover {
+.post-view-page > .comments .comment-item textarea + button:hover {
   background-color: #181818;
 }
-.board-view-page > .comments .comment-item > ul {
+.post-view-page > .comments .comment-item > ul {
   position: absolute;
   right: 0;
   top: 0;
   overflow: hidden;
 }
-.board-view-page > .comments .comment-item > ul li {
+.post-view-page > .comments .comment-item > ul li {
   position: relative;
   float: left;
   padding: 0 10px 0 0;
   margin: 0 10px 0 0;
 }
-.board-view-page > .comments .comment-item > ul li:after {
+.post-view-page > .comments .comment-item > ul li:after {
   position: absolute;
   right: 0;
   top: 2px;
   content: "|";
   color: #868e96;
 }
-.board-view-page > .comments .comment-item > ul li:last-child {
+.post-view-page > .comments .comment-item > ul li:last-child {
   margin-right: 0;
   padding-right: 0;
 }
-.board-view-page > .comments .comment-item > ul li:last-child:after {
+.post-view-page > .comments .comment-item > ul li:last-child:after {
   content: "";
 }
-.board-view-page > .comments .comment-item > ul li button {
+.post-view-page > .comments .comment-item > ul li button {
   color: #868e96;
 }
-.board-view-page > .comments .comment-item > ul li button:hover {
+.post-view-page > .comments .comment-item > ul li button:hover {
   color: #2c3e50;
 }
 .comment-form {
