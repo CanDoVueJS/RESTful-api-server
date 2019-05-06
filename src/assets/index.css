@@ -1,5 +1,7 @@
+/**
+ * 공통 스타일
+ */
 @import url(https://use.fontawesome.com/releases/v5.6.3/css/all.css);
-
 html, body {
   height: 100%;
   background-color: #f9f9f9;
@@ -9,7 +11,7 @@ html, body, div, input, fieldset, form, h1, p, table, thead, th, tbody, td, text
   padding: 0;
   border: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 table {
   border-collapse: collapse;
@@ -44,111 +46,9 @@ input:disabled {
   height: 100%;
 }
 
-.app-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  border-bottom: 1px solid #ededed;
-  background-color: #fff;
-}
-.app-header h1 {
-  position: absolute;
-  left: 10px;
-  top: 12px;
-  font-size: 26px;
-}
-.app-header > div {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.app-header > div > strong > button {
-  font-size: 14px;
-}
-.app-header > div > strong > button:focus {
-  outline: none;
-}
-.app-header > div > strong > button > i {
-  padding-left: 8px;
-}
-.app-header > div > strong > button > .fa-sort-up {
-  margin-bottom: -1px;
-  vertical-align: bottom;
-}
-.app-header > div > strong > button > .fa-sort-down {
-  margin-top: -1px;
-  vertical-align: top;
-}
-.app-header > div > ul {
-  position: absolute;
-  top: 44px;
-  left: 0;
-  width: 100%;
-  -webkit-box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
-}
-.app-header > div > ul > li > button {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  text-align: left;
-}
-.app-header > div > ul > li > button:focus {
-  outline: none;
-}
-
-.sign-up-page {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 456px;
-  height: 396px;
-  margin: -186px 0 0 -228px;
-  padding: 45px 60px 60px;
-  background-color: #fff;
-  border: 1px solid #ededed;
-}
-.sign-up-page h3 {
-  margin-bottom: 20px;
-  text-align: left;
-}
-.sign-up-page form fieldset input {
-  margin-bottom: 8px;
-}
-.sign-up-page form fieldset input[type="text"], .sign-up-page form fieldset input[type="password"] {
-  width: 100%;
-  height: calc(1.5em + .75rem + 2px);
-  margin-bottom: 8px;
-  padding: 5px 12px;
-  color: #495057;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  font-size: 14px;
-}
-.sign-up-page form fieldset button[type="submit"] {
-  width: 100%;
-  margin: 16px 0 8px;
-  padding: .5rem .75rem;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  border-radius: .25rem;
-  background-color: #414141;
-  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-}
-.sign-up-page form fieldset button[type="submit"]:hover {
-  background-color: #181818;
-}
-.sign-up-page > p {
-  font-size: 14px;
-  text-align: left;
-}
-
+/**
+ * 로그인 페이지
+ */
 .sign-in-page {
   position: absolute;
   left: 50%;
@@ -183,35 +83,146 @@ input:disabled {
 .sign-in-page form fieldset button[type="submit"] {
   width: 100%;
   margin-bottom: 8px;
-  padding: .5rem .75rem;
+  padding: .75rem;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
   border-radius: .25rem;
   background-color: #414141;
-  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
 .sign-in-page form fieldset button[type="submit"]:hover {
   background-color: #181818;
 }
 .sign-in-page > p {
-  font-size: 14px;
+  font-size: 16px;
   text-align: left;
 }
 
+/**
+ * 회원가입 페이지
+ */
+.sign-up-page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 456px;
+  height: 396px;
+  margin: -186px 0 0 -228px;
+  padding: 45px 60px 60px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+}
+.sign-up-page h3 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.sign-up-page form fieldset input {
+  margin-bottom: 8px;
+}
+.sign-up-page form fieldset input[type="text"], .sign-up-page form fieldset input[type="password"] {
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  margin-bottom: 8px;
+  padding: 5px 12px;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  font-size: 14px;
+}
+.sign-up-page form fieldset button[type="submit"] {
+  width: 100%;
+  margin: 16px 0 8px;
+  padding: .75rem;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .25rem;
+  background-color: #414141;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.sign-up-page form fieldset button[type="submit"]:hover {
+  background-color: #181818;
+}
+.sign-up-page > p {
+  font-size: 16px;
+  text-align: left;
+}
+
+/**
+ * 앱 헤더 컴포넌트
+ */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #ededed;
+  background-color: #fff;
+}
+.app-header h1 {
+  position: absolute;
+  left: 20px;
+  top: 12px;
+  font-size: 26px;
+}
+.app-header > div {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.app-header > div > strong > button {
+  font-size: 14px;
+}
+.app-header > div > strong > button:focus {
+  outline: none;
+}
+.app-header > div > strong > button > i {
+  padding-left: 8px;
+}
+.app-header > div > strong > button > .fa-sort-up {
+  margin-bottom: -1px;
+  vertical-align: bottom;
+}
+.app-header > div > strong > button > .fa-sort-down {
+  margin-top: -1px;
+  vertical-align: top;
+}
+.app-header > div > ul {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+}
+.app-header > div > ul > li > button {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+.app-header > div > ul > li > button:focus {
+  outline: none;
+}
+
+/**
+ * 포스트 리스트 페이지
+ */
 .board-list-page {
   width: 940px;
   margin: 60px auto 0;
   padding: 40px 30px 60px;
   background-color: #fff;
-  -webkit-box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+}
+.board-list-page:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 .board-list-page h1 {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   text-align: left;
   font-size: 24px;
 }
@@ -256,22 +267,204 @@ input:disabled {
   border-radius: .25rem;
   color: #fff;
   text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.board-list-page > a:hover {
+  background-color: #181818;
 }
 
-.board-create-page {
+/**
+ * 포스트 상세보기 페이지
+ */
+.board-view-page {
+  width: 940px;
+  margin: 60px auto 0;
+  padding: 40px 30px 60px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
+  text-align: right;
+}
+.board-view-page h1 {
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 24px;
+}
+.board-view-page > p {
+  text-align: center;
+  margin: 1rem 0;
+}
+.board-view-page .board-view > div {
+  padding: 20px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 2px solid #868e96;
+}
+.board-view-page .board-view > div > h1 {
+  font-size: 24px;
+}
+.board-view-page .board-view > div > span {
+  display: block;
+  margin-bottom: 2px;
+  color: #868e96;
+}
+.board-view-page .board-view > div > strong {
+  font-weight: normal;
+  color: #868e96;
+}
+.board-view-page .board-view > p {
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: left;
+}
+.board-view-page a, .board-view-page button {
+  display: inline-block;
+  padding: .5rem 1.75rem;
+  background-color: #414141;
+  border-radius: .25rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.board-view-page > a:hover, .board-view-page > button:hover {
+  background-color: #181818;
+}
+.board-view-page > ul {
+  text-align: left;
+  margin-top: 20px;
+  border-top: 1px solid #ced4da;
+}
+.board-view-page > ul > li {
+  overflow: hidden;
+  padding: 20px;
+  border-bottom: 1px solid #ced4da;
+}
+.board-view-page > .comments .comment-item {
+  position: relative;
+}
+.board-view-page > .comments .comment-item > strong {
+  margin-right: 5px;
+}
+.board-view-page > .comments .comment-item > span {
+  font-size: 14px;
+  vertical-align: bottom;
+}
+.board-view-page > .comments .comment-item > p,
+.board-view-page > .comments .comment-item textarea,
+.board-view-page > .comments .comment-item textarea + button {
+  margin-top: .5rem;
+}
+.board-view-page > .comments .comment-item textarea {
+  display: inline-block;
+  border: 1px solid #868e96;
+  width: 85%;
+  padding: 10px;
+  height: 60px;
+  vertical-align: top;
+  font-size: 14px;
+}
+.board-view-page > .comments .comment-item textarea + button {
+  display: inline-block;
+  border: 1px solid #666;
+  padding: 10px;
+  width: 14%;
+  height: 60px;
+  background-color: #414141;
+  color: white;
+  border-radius: .25rem;
+  font-size: 1rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.board-view-page > .comments .comment-item textarea + button:hover {
+  background-color: #181818;
+}
+.board-view-page > .comments .comment-item > ul {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 50%;
-  padding: 45px 60px 60px;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+}
+.board-view-page > .comments .comment-item > ul li {
+  position: relative;
+  float: left;
+  padding: 0 10px 0 0;
+  margin: 0 10px 0 0;
+}
+.board-view-page > .comments .comment-item > ul li:after {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  content: "|";
+  color: #868e96;
+}
+.board-view-page > .comments .comment-item > ul li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+.board-view-page > .comments .comment-item > ul li:last-child:after {
+  content: "";
+}
+.board-view-page > .comments .comment-item > ul li button {
+  color: #868e96;
+}
+.board-view-page > .comments .comment-item > ul li button:hover {
+  color: #2c3e50;
+}
+.comment-form {
+  position: relative;
+  margin-top: 20px;
+  padding-right: 100px;
+  overflow: hidden;
+}
+.comment-form textarea {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #868e96;
+  padding: 10px;
+  font-size: 14px;
+}
+.comment-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 60px;
+  width: 96px;
+  background-color: #414141;
+  color: #fff;
+  font-size: 16px;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.comment-form button:hover {
+  background-color: #181818;
+}
+.comments button {
+  background-color: transparent;
+  color: black;
+  font-size: 12px;
+  padding: 0;
+  border-radius: 0;
+  transition: opacity 0.3s ease-in-out;
+  outline: 0;
+}
+
+/**
+ * 포스트 생성 페이지
+ */
+.board-create-page {
+  width: 940px;
+  padding: 40px 30px 60px;
+  margin: 60px auto 0;
   background-color: #fff;
   border: 1px solid #ededed;
 }
-.board-create-page h3 {
+.board-create-page:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.board-create-page h1 {
   margin-bottom: 20px;
   text-align: left;
+  font-size: 24px;
 }
 .board-create-page form fieldset input {
   margin-bottom: 8px;
@@ -295,73 +488,40 @@ input:disabled {
 .board-create-page form fieldset input[type="text"] {
   height: calc(1.5em + .75rem + 2px);
 }
-.board-create-page form fieldset button[type="submit"] {
-  width: 100%;
+.board-create-page form fieldset button[type="submit"], .board-create-page form fieldset a {
+  float: right;
+  height: 38px;
+  box-sizing: border-box;
   margin: 16px 0 8px;
-  padding: .5rem .75rem;
+  padding: .5rem 1.75rem;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
   border-radius: .25rem;
   background-color: #414141;
-  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
-.board-create-page form fieldset button[type="submit"]:hover {
+.board-create-page form fieldset a {
+  text-decoration: none;
+  margin-right: 4px;
+}
+.board-create-page form fieldset button[type="submit"]:hover, .board-create-page form fieldset a:hover {
   background-color: #181818;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * 포스트 수정 페이지
+ */
 .post-edit-page {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 50%;
-  padding: 45px 60px 60px;
+  width: 940px;
+  padding: 40px 30px 60px;
+  margin: 60px auto 0;
   background-color: #fff;
   border: 1px solid #ededed;
 }
-.post-edit-page h3 {
+.post-edit-page h1 {
   margin-bottom: 20px;
   text-align: left;
+  font-size: 24px;
 }
 .post-edit-page form fieldset input {
   margin-bottom: 8px;
@@ -385,230 +545,24 @@ input:disabled {
 .post-edit-page form fieldset input[type="text"] {
   height: calc(1.5em + .75rem + 2px);
 }
-.post-edit-page form fieldset button[type="submit"] {
-  width: 100%;
+.post-edit-page form fieldset button[type="submit"], .post-edit-page form fieldset a {
+  float: right;
+  height: 38px;
+  box-sizing: border-box;
   margin: 16px 0 8px;
   padding: .5rem .75rem;
+  padding: .5rem 1.75rem;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
   border-radius: .25rem;
   background-color: #414141;
-  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
-.post-edit-page form fieldset button[type="submit"]:hover {
+.post-edit-page form fieldset a {
+  text-decoration: none;
+  margin-right: 4px;
+}
+.post-edit-page form fieldset button[type="submit"]:hover, .post-edit-page form fieldset a:hover {
   background-color: #181818;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.board-view-page {
-  width: 940px;
-  margin: 60px auto 0;
-  padding: 40px 30px 60px;
-  background-color: #fff;
-  -webkit-box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.2);
-  text-align: right;
-}
-.board-view-page h1 {
-  margin-bottom: 12px;
-  text-align: left;
-  font-size: 24px;
-}
-.board-view-page > p {
-  text-align: center;
-  margin: 1rem 0;
-}
-.board-view-page .board-view > div {
-  padding: 20px;
-  text-align: left;
-  background-color: #888;
-  color: #fff;
-  font-size: 14px;
-}
-.board-view-page .board-view > div > h1 {
-  font-size: 24px;
-}
-.board-view-page .board-view > div > span {
-  display: block;
-  margin-bottom: 2px;
-}
-.board-view-page .board-view > div > strong {
-  font-weight: normal;
-}
-.board-view-page .board-view > p {
-  margin-bottom: 20px;
-  padding: 20px;
-  text-align: left;
-}
-.board-view-page a, .board-view-page button {
-  display: inline-block;
-  padding: .5rem 1.75rem;
-  background-color: #414141;
-  border-radius: .25rem;
-  color: #fff;
-  text-decoration: none;
-}
-.board-view-page > ul {
-  text-align: left;
-  margin-top: 20px;
-  border-top: 1px solid #888;
-}
-.board-view-page > ul > li {
-  overflow: hidden;
-  padding: 20px;
-  border-bottom: 1px dotted #999;
-}
-.board-view-page > .comments .comment-item {
-  position: relative;
-}
-.board-view-page > .comments .comment-item > strong {
-  margin-right: 5px;
-}
-.board-view-page > .comments .comment-item > span {
-  font-size: 14px;
-  vertical-align: bottom;
-}
-.board-view-page > .comments .comment-item > p,
-.board-view-page > .comments .comment-item textarea,
-.board-view-page > .comments .comment-item textarea + button {
-  margin-top: .5rem;
-}
-.board-view-page > .comments .comment-item button:hover {
-  opacity: 0.6;
-}
-.board-view-page > .comments .comment-item textarea {
-  display: inline-block;
-  border: 1px solid #666;
-  width: 85%;
-  padding: 10px;
-  height: 60px;
-  vertical-align: top;
-}
-.board-view-page > .comments .comment-item textarea + button {
-  display: inline-block;
-  border: 1px solid #666;
-  padding: 10px;
-  width: 14%;
-  height: 60px;
-  background-color: #414141;
-  color: white;
-  border-radius: .25rem;
-  font-size: 1rem;
-}
-.board-view-page > .comments .comment-item > ul {
-  position: absolute;
-  right: 0;
-  top: 0;
-  overflow: hidden;
-}
-.board-view-page > .comments .comment-item > ul li {
-  position: relative;
-  float: left;
-  padding: 0 10px 0 0;
-  margin: 0 10px 0 0;
-}
-.board-view-page > .comments .comment-item > ul li:after {
-  position: absolute;
-  right: 0;
-  top: 2px;
-  content: "|";
-}
-.board-view-page > .comments .comment-item > ul li:last-child {
-  margin-right: 0;
-  padding-right: 0;
-}
-.board-view-page > .comments .comment-item > ul li:last-child:after {
-  content: "";
-}
-.comment-form {
-  position: relative;
-  margin-top: 20px;
-  padding-right: 100px;
-  overflow: hidden;
-}
-.comment-form textarea {
-  width: 100%;
-  height: 60px;
-  border: 1px solid #666;
-  padding: 10px;
-}
-.comment-form button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 60px;
-  width: 96px;
-  background-color: #414141;
-  color: #fff;
-  font-size: 16px;
-}
-.comments button {
-  background-color: transparent;
-  color: black;
-  font-size: 12px;
-  padding: 0;
-  border-radius: 0;
-  -webkit-transition: opacity 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out;
-  outline: 0;
-}
-
-/*# sourceMappingURL=index.css.map*/
