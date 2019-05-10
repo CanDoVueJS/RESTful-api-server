@@ -258,7 +258,7 @@ input:disabled {
   text-decoration: none;
 }
 
-.board-create-page {
+.post-create-page {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -269,21 +269,21 @@ input:disabled {
   background-color: #fff;
   border: 1px solid #ededed;
 }
-.board-create-page h3 {
+.post-create-page h1 {
   margin-bottom: 20px;
   text-align: left;
 }
-.board-create-page form fieldset input {
+.post-create-page form fieldset input {
   margin-bottom: 8px;
 }
-.board-create-page label {
+.post-create-page label {
   display: inline-block;
   width: 100%;
   text-align: left;
   font-size: 14px;
 }
-.board-create-page form fieldset input[type="text"],
-.board-create-page form fieldset textarea {
+.post-create-page form fieldset input[type="text"],
+.post-create-page form fieldset textarea {
   width: 100%;
   margin-bottom: 8px;
   padding: 5px 12px;
@@ -292,10 +292,10 @@ input:disabled {
   border-radius: .25rem;
   font-size: 14px;
 }
-.board-create-page form fieldset input[type="text"] {
+.post-create-page form fieldset input[type="text"] {
   height: calc(1.5em + .75rem + 2px);
 }
-.board-create-page form fieldset button[type="submit"] {
+.post-create-page form fieldset button[type="submit"] {
   width: 100%;
   margin: 16px 0 8px;
   padding: .5rem .75rem;
@@ -309,7 +309,7 @@ input:disabled {
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
-.board-create-page form fieldset button[type="submit"]:hover {
+.post-create-page form fieldset button[type="submit"]:hover {
   background-color: #181818;
 }
 
