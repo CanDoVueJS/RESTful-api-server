@@ -293,25 +293,25 @@ input:disabled {
   text-align: center;
   margin: 1rem 0;
 }
-.post-view-page .board-view > div {
+.post-view-page .post-view > div {
   padding: 20px;
   text-align: left;
   font-size: 14px;
   border-bottom: 2px solid #868e96;
 }
-.post-view-page .board-view > div > h1 {
+.post-view-page .post-view > div > h1 {
   font-size: 24px;
 }
-.post-view-page .board-view > div > span {
+.post-view-page .post-view > div > span {
   display: block;
   margin-bottom: 2px;
   color: #868e96;
 }
-.post-view-page .board-view > div > strong {
+.post-view-page .post-view > div > strong {
   font-weight: normal;
   color: #868e96;
 }
-.post-view-page .board-view > p {
+.post-view-page .post-view > p {
   margin-bottom: 20px;
   padding: 20px;
   text-align: left;
