@@ -1,5 +1,7 @@
 Board example Restful API 샘플
 ==================================
+> node v8.12.0 버전을 사용해주세요!
+
 CanDoVueJS(가제)의 클라이언트 어플리케이션 제작을 위해 만들어진 Restful API 서버 입니다.
 
 시작하기
